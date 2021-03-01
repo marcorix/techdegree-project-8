@@ -96,6 +96,7 @@ clearBtn.addEventListener("click", () => {
   hiddenCards.forEach((card) => {
     card.classList.remove("hidden");
   });
+  input.value = "";
 });
 
 // Open modal handler
