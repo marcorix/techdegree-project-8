@@ -5,26 +5,31 @@
 }
 body {
   text-align: center;
+  background-color: rgb(249, 247, 243);
 }
 h1 {
   font-size: 1.5rem;
   margin: 50px;
 }
 .grid-container {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-template-rows: auto;
 }
 .card {
   display: flex;
-  min-width: 450px;
+  min-width: 400px;
   align-items: center;
-  background-color: aqua;
+  background-color: white;
+  border: 2px solid rgb(232, 232, 232);
   margin: 20px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
-img {
+.card img {
+  width: 80px;
   border-radius: 50%;
 }
 .text-container {
@@ -46,29 +51,30 @@ img {
 }
 
 .modal-content {
+  position: relative;
   background-color: white;
   margin: 20% auto;
   width: 300px;
   border-radius: 5px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-}
-
-.modal-top {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.5;
-  align-items: center;
-  border-bottom: 2px solid rgb(205, 205, 205);
-  margin: 0 20px;
   padding: 20px;
+  line-height: 1.5;
+}
+.modal-content img {
+  width: 120px;
+  border-radius: 50%;
+}
+hr {
+  margin: 15px;
 }
 .close-btn {
-  margin-left: auto;
+  position: absolute;
+  right: 15px;
+  top: 5px;
   color: gray;
   font-size: 20px;
+  cursor: pointer;
 }
-
-.modal-bottom {
-  line-height: 1.5;
-  padding: 20px;
+.close-btn:hover {
+  color: rgb(86, 86, 86);
 }
