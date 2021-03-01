@@ -3,12 +3,14 @@ const urlAPI =
 const container = document.querySelector(".grid-container");
 const emplyees = [];
 
+// get data from API
 fetch(urlAPI)
   .then((res) => res.json())
   .then((res) => res.results)
   .then(displayEmployees)
   .catch((err) => console.log(err));
 
+// create HTML from the data
 function displayEmployees(data) {
   employees = data;
   employeeHTML = ``;

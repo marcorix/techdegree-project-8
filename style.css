@@ -32,3 +32,43 @@ img {
   margin-left: 30px;
   line-height: 1.5;
 }
+
+.modal {
+  display: none;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 20% auto;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+}
+
+.modal-top {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  align-items: center;
+  border-bottom: 2px solid rgb(205, 205, 205);
+  margin: 0 20px;
+  padding: 20px;
+}
+.close-btn {
+  margin-left: auto;
+  color: gray;
+  font-size: 20px;
+}
+
+.modal-bottom {
+  line-height: 1.5;
+  padding: 20px;
+}
