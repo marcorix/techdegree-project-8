@@ -78,3 +78,10 @@ hr {
 .close-btn:hover {
   color: rgb(86, 86, 86);
 }
+
+.hidden {
+  display: none;
+}
+form {
+  display: inline;
+}

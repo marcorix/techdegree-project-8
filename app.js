@@ -6,6 +6,7 @@ const modalData = document.querySelector(".modal-data");
 const modalClose = document.querySelector(".close-btn");
 const form = document.querySelector(".searchForm");
 const input = document.querySelector(".searchInput");
+const clearBtn = document.querySelector(".clear");
 
 let employees = [];
 
@@ -76,11 +77,24 @@ function displayModal(index) {
 // Filter handler
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+
   const employeesCards = document.querySelectorAll(".card");
   const nameInput = input.value;
+
   employeesCards.forEach((employee) => {
     const cardName = employee.querySelector("h2");
-    console.log(cardName);
+
+    if (!cardName.textContent.toUpperCase().includes(nameInput.toUpperCase())) {
+      employee.classList.add("hidden");
+    }
+  });
+});
+
+//Clear handler
+clearBtn.addEventListener("click", () => {
+  const hiddenCards = document.querySelectorAll(".hidden");
+  hiddenCards.forEach((card) => {
+    card.classList.remove("hidden");
   });
 });
 
