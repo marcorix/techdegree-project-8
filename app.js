@@ -46,7 +46,6 @@ function displayEmployees(data) {
 }
 
 // create HTML for the Modal window
-
 function displayModal(index) {
   let {
     email,
@@ -99,7 +98,7 @@ form.addEventListener("submit", (e) => {
   handleSearch();
 });
 
-//Clear handler
+//Clear filter handler
 clearBtn.addEventListener("click", () => {
   const hiddenCards = document.querySelectorAll(".hidden");
   hiddenCards.forEach((card) => {
