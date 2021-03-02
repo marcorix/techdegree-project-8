@@ -119,7 +119,6 @@ container.addEventListener("click", (e) => {
 });
 
 // Close modal handlers
-
 modalClose.addEventListener("click", () => {
   modal.style.display = "none";
 });
