@@ -16,7 +16,12 @@
     <header>
       <h1>Awesome Startup Employee Directory</h1>
       <form class="searchForm">
-        <input type="text" class="searchInput" placeholder="Insert Name..." />
+        <input
+          type="search"
+          name="search"
+          id="search"
+          placeholder="Insert Name..."
+        />
         <button type="submit">Search</button>
       </form>
       <button class="clear">Clear</button>
@@ -25,6 +30,8 @@
     <main class="grid-container"></main>
     <div class="modal">
       <div class="modal-content">
+        <div class="forward">>></div>
+        <div class="backward"><<</div>
         <span class="close-btn">&times;</span>
 
         <div class="modal-data"></div>

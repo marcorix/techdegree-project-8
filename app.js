@@ -5,9 +5,12 @@ const modal = document.querySelector(".modal");
 const modalData = document.querySelector(".modal-data");
 const modalClose = document.querySelector(".close-btn");
 const form = document.querySelector(".searchForm");
-const input = document.querySelector(".searchInput");
+const search = document.querySelector("#search");
 const clearBtn = document.querySelector(".clear");
+const forwardBtn = document.querySelector(".forward");
+const backwardBtn = document.querySelector(".backward");
 
+let indexModalWindow = null;
 let employees = [];
 
 // get data from API
@@ -48,12 +51,12 @@ function displayModal(index) {
   let {
     email,
     dob,
-    location: { city, country, postcode, street },
+    location: { city, postcode, street },
     name,
     phone,
     picture,
   } = employees[index];
-  console.log(employees);
+
   let month = new Date(dob.date).getMonth();
   let day = new Date(dob.date).getDate();
   let year = new Date(dob.date).getFullYear();
@@ -67,27 +70,33 @@ function displayModal(index) {
   <hr />
 
   <p>${phone}</p>
-  <p>${street.number} ${street.name} ${postcode} ${country}</p>
+  <p>${street.number} ${street.name} ${postcode}</p>
   <p>Birthday: ${month}/${day}/${year}</p>
   `;
   modalData.innerHTML = modalHTML;
   modal.style.display = "block";
 }
 
-// Filter handler
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
+// Filter function
+function handleSearch() {
   const employeesCards = document.querySelectorAll(".card");
-  const nameInput = input.value;
+  const nameSearch = search.value;
 
   employeesCards.forEach((employee) => {
-    const cardName = employee.querySelector("h2");
+    const employeeName = employee.querySelector("h2");
 
-    if (!cardName.textContent.toUpperCase().includes(nameInput.toUpperCase())) {
+    if (
+      !employeeName.textContent.toUpperCase().includes(nameSearch.toUpperCase())
+    ) {
       employee.classList.add("hidden");
     }
   });
+}
+
+// Filter handler
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  handleSearch();
 });
 
 //Clear handler
@@ -96,7 +105,7 @@ clearBtn.addEventListener("click", () => {
   hiddenCards.forEach((card) => {
     card.classList.remove("hidden");
   });
-  input.value = "";
+  search.value = "";
 });
 
 // Open modal handler
@@ -104,6 +113,8 @@ container.addEventListener("click", (e) => {
   if (e.target !== container) {
     const card = e.target.closest(".card");
     const index = card.getAttribute("data-index");
+    indexModalWindow = index;
+    console.log(indexModalWindow);
     displayModal(index);
   }
 });
@@ -117,5 +128,27 @@ modalClose.addEventListener("click", () => {
 modal.addEventListener("click", (e) => {
   if (e.target.className === "modal") {
     modal.style.display = "none";
+  }
+});
+
+//Forwad modal window
+forwardBtn.addEventListener("click", () => {
+  if (indexModalWindow === employees.length - 1) {
+    indexModalWindow = 0;
+    displayModal(indexModalWindow);
+  } else {
+    indexModalWindow++;
+    displayModal(indexModalWindow);
+  }
+});
+
+//Backward modal window
+backwardBtn.addEventListener("click", () => {
+  if (indexModalWindow === 0) {
+    indexModalWindow = employees.length - 1;
+    displayModal(indexModalWindow);
+  } else {
+    indexModalWindow--;
+    displayModal(indexModalWindow);
   }
 });

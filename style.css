@@ -68,6 +68,7 @@ button {
   margin: 20px;
   padding: 20px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .card img {
@@ -90,6 +91,8 @@ button {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   overflow: auto;
+  animation-name: modal-window;
+  animation-duration: 0.5s;
 }
 
 .modal-content {
@@ -120,7 +123,36 @@ hr {
 .close-btn:hover {
   color: rgb(86, 86, 86);
 }
+.forward,
+.backward {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  position: absolute;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: white;
+}
+.forward {
+  margin: 40% 110%;
+}
+.backward {
+  margin: 40% -40%;
+}
 
 .hidden {
   display: none;
+}
+
+@keyframes modal-window {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
